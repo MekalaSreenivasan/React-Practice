@@ -1,38 +1,17 @@
-import reactImg from './assets/react-core-concepts.png';
-import componentsImg from './assets/components.png';
-import { CORE_CONCEPTS } from './data';
-
-const reactDescriptions = ['Fundamental', 'Crucial', 'Core'];
-
-function genRandomInt(max) {
-  return Math.floor(Math.random() * (max + 1));
-}
-
-function CoreConcept({image, title, description}) {
-  return (
-    <li>
-      <img src={image} alt={title}></img>
-      <h3>{title}</h3>
-      <p>{description}</p>
-    </li>
-  )
-}
-
-function Header() {
-  const description = reactDescriptions[genRandomInt(2)];
-
-  return (
-    <header>
-      <img src={reactImg} alt="Stylized atom" />
-      <h1>React Essentials</h1>
-      <p>
-        {description} React concepts you will need for almost any app you are going to build!
-      </p>
-    </header>
-  );
-}
+import { useState } from 'react';
+import { CORE_CONCEPTS, EXAMPLES } from './data';
+import Header from './components/Header/Header';
+import CoreConcept from './components/CoreConcept';
+import TabButton from './components/TabButton';
 
 function App() {
+
+  const [selectedTopic, setSelectedTopic] = useState();
+
+  function handleClick(selectedButton) {
+    setSelectedTopic(selectedButton);
+  }
+
   return (
     <div>
       <Header />
@@ -40,23 +19,87 @@ function App() {
         <section id="core-concepts">
           <h2>Core Concepts</h2>
           <ul>
-            <CoreConcept 
-              title={CORE_CONCEPTS[0].title}
-              description={CORE_CONCEPTS[0].description}
-              image={CORE_CONCEPTS[0].image}
-            />
-            <CoreConcept 
-              {...CORE_CONCEPTS[1]}
-            />
-            <CoreConcept 
-              {...CORE_CONCEPTS[2]}
-            />
-            <CoreConcept 
-               {...CORE_CONCEPTS[3]}
-            />                        
+            {/**
+             * Dynamic way of adding elements
+             */}
+            {CORE_CONCEPTS.map((concept) =>
+               (<CoreConcept key={concept.title} {...concept}/>))
+            }  
+
+            {/**
+             * To add the content manually 
+             *             <CoreConcept 
+                  title={CORE_CONCEPTS[0].title}
+                  description={CORE_CONCEPTS[0].description}
+                  image={CORE_CONCEPTS[0].image}
+                />
+                <CoreConcept 
+                  {...CORE_CONCEPTS[1]}
+                />
+                <CoreConcept 
+                  {...CORE_CONCEPTS[2]}
+                />
+                <CoreConcept 
+                  {...CORE_CONCEPTS[3]}
+                />
+             */}
+                        
           </ul>
         </section>
-        <h2>Time to get started!</h2>
+        <section id="examples">
+          <h2>Examples</h2>
+          <menu>
+            <TabButton isSelected={selectedTopic === 'components'} 
+              onClick={() => handleClick('components')}>Components</TabButton>
+            <TabButton isSelected={selectedTopic === 'jsx'}
+              onClick={() => handleClick('jsx')}>JSX</TabButton>
+            <TabButton isSelected={selectedTopic === 'props'}
+              onClick={() => handleClick('props')}>Props</TabButton>
+            <TabButton isSelected={selectedTopic === 'state'}
+              onClick={() => handleClick('state')}>State</TabButton>
+          </menu>
+          {!selectedTopic ? (<p>Please select a topic.</p>) : ( 
+            <div id="tab-content">
+              <h3>{EXAMPLES[selectedTopic].title}</h3>
+              <p>{EXAMPLES[selectedTopic].description}</p>
+              <pre>
+                <code>
+                {EXAMPLES[selectedTopic].code}
+                </code>
+              </pre>
+            </div>)}
+            {/**
+             * ALTERNATIVE APPROACH FOR THE ABOVE CONDITONAL STATEMENT
+             * APPROACH 1:
+             * {!selectedTopic && (<p>Please select a topic.</p>)}
+             * {selectedTopic && ( 
+                <div id="tab-content">
+                  <h3>{EXAMPLES[selectedTopic].title}</h3>
+                  <p>{EXAMPLES[selectedTopic].description}</p>
+                  <pre>
+                    <code>
+                    {EXAMPLES[selectedTopic].code}
+                    </code>
+                  </pre>
+                </div>) }
+
+              * APPROACH 2:
+              * Add the following code to the beginning(inside) of the component function
+              * let tabContent = <p>Please select a topic.</p>;
+              * if (selectedTopic) {
+              * tabContent = (
+              * <div id="tab-content">
+                  <h3>{EXAMPLES[selectedTopic].title}</h3>
+                  <p>{EXAMPLES[selectedTopic].description}</p>
+                  <pre>
+                    <code>
+                    {EXAMPLES[selectedTopic].code}
+                    </code>
+                  </pre>
+                </div>);
+              * }
+             */}
+        </section>
       </main>
     </div>
   );
