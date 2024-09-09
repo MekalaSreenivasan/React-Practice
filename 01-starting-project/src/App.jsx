@@ -11,9 +11,24 @@ function App() {
   function handleClick(selectedButton) {
     setSelectedTopic(selectedButton);
   }
-
+/**
+ * We have may ways to wrap the child elements into the return and avoid unnessacry use of div in DOM
+ * Way1: Using Fragment from react library
+ *  Example: 
+ * <Fragment>
+ *  <Header/>
+ *  <menu></menu>
+ * </Fragment>
+ * 
+ * Way2: Simply adding <></> at starting and ending 
+ * Example: 
+ * <>
+ *  <Header/>
+ *  <menu></menu>
+ * </>
+ */
   return (
-    <div>
+    <>
       <Header />
       <main>
         <section id="core-concepts">
@@ -101,7 +116,7 @@ function App() {
              */}
         </section>
       </main>
-    </div>
+    </>
   );
 }
 
