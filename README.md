@@ -7,3 +7,5 @@
 <img width="959" alt="Timer_Game_2" src="https://github.com/user-attachments/assets/e39884ef-344f-46c0-860a-7de1c7c4b868">
 <img width="959" alt="Place_Picker_1" src="https://github.com/user-attachments/assets/d8861603-9792-49ea-941c-dd23b02f7dbd">
 <img width="959" alt="Place_picker_2" src="https://github.com/user-attachments/assets/af9cbadb-d279-4704-91d2-b1b58b4884eb">
+<img width="957" alt="Quiz_1" src="https://github.com/user-attachments/assets/37f7f07a-8c70-418c-a521-39201b8cc374">
+<img width="959" alt="Quiz_2" src="https://github.com/user-attachments/assets/3e39eb49-379a-4c38-bfed-fbb72824ae34">
