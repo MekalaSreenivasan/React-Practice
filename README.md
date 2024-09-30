@@ -5,3 +5,5 @@
 <img width="959" alt="Investment_Calculator" src="https://github.com/user-attachments/assets/03417a11-4b21-4855-b05e-f839a4ab0932">
 <img width="959" alt="Timer_Game_1" src="https://github.com/user-attachments/assets/9f86a5bb-7ecf-45a0-94c8-075158bc0d13">
 <img width="959" alt="Timer_Game_2" src="https://github.com/user-attachments/assets/e39884ef-344f-46c0-860a-7de1c7c4b868">
+<img width="959" alt="Place_Picker_1" src="https://github.com/user-attachments/assets/d8861603-9792-49ea-941c-dd23b02f7dbd">
+<img width="959" alt="Place_picker_2" src="https://github.com/user-attachments/assets/af9cbadb-d279-4704-91d2-b1b58b4884eb">
